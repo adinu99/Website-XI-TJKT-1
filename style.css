@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+    outline: 1px solid red;
 }
 
 html,
@@ -363,7 +364,7 @@ nav {
 .marquee {
   width: 100%;
   height: 80px;
-  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   align-items: center;       
   background: linear-gradient(90deg, var(--accent1), var(--accent4));
@@ -600,7 +601,7 @@ h2 {
 /* ====== GALLERY ====== */
 .section-blank {
   text-align: center;
-  margin:115px 0;
+  margin: 115px 0;
 }
 
 .section-blank h2 {
@@ -625,7 +626,7 @@ h2 {
   content: "";
   position: absolute;
   top: 50%;
-  width: 100vw;
+  width: 100%;
   height: 1px;
   background: rgba(255, 255, 255, 0.15);
 }
@@ -689,7 +690,7 @@ h2 {
   content: "";
   position: absolute;
   top: 50%;
-  width: 100vw;
+  width: 100%;
   height: 1px;
   background: rgba(255, 255, 255, 0.15);
 }
@@ -1126,3 +1127,74 @@ form.contact textarea:-webkit-autofill {
   }
 }
 
+/* Slot jadwal jangan pakai width fixed di HP */
+.slot {
+  width: clamp(140px, 100%, 210px);
+  padding: 10px 16px;
+}
+@media (max-width: 768px) {
+  .slot { width: 100%; }
+}
+/* Footer responsif */
+@media (max-width: 900px) { .footer-container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .footer-container { grid-template-columns: 1fr; } }
+
+
+/* ===== FIX GLOBAL/RESPONSIF ===== */
+html { -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* Hindari overflow horizontal kecil */
+body { overflow-x: hidden; }
+
+/* Safe area (poni iPhone) & padding nav */
+nav { padding-top: calc(env(safe-area-inset-top) + 12px); }
+
+/* Perbaiki about yang bikin melebar di mobile (min-width sebelumnya bikin overflow) */
+.about-inner { min-width: 0; }
+
+/* Slot jadwal jangan pakai width fixed di HP */
+.slot {
+  width: clamp(140px, 100%, 210px);
+  padding: 10px 16px;
+}
+@media (max-width: 768px) {
+  .slot { width: 100%; }
+}
+
+/* Kurangi padding hero card di HP agar tidak “sesak” */
+@media (max-width: 980px) {
+  .hero-card { padding: 28px 18px; }
+  .preview .mini-card { padding: 12px; }
+}
+
+/* Marquee lebih kecil di HP */
+@media (max-width: 640px) {
+  .marquee { height: 56px; font-size: clamp(1rem, 5vw, 1.3rem); }
+}
+
+/* Mobile menu: jangan line-height 4px (bug visual) */
+.mobile-menu a { line-height: 1.4; }
+
+/* Kunci body saat menu mobile terbuka (hindari “loncat” saat scroll) */
+body.menu-open { overflow: hidden; }
+
+/* Footer responsif */
+@media (max-width: 900px) { .footer-container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .footer-container { grid-template-columns: 1fr; } }
+
+/* Nonaktifkan efek tilt di perangkat touch untuk stabilitas */
+@media (hover: none) and (pointer: coarse) {
+  .member { transform: none !important; }
+  .member:hover { transform: none !important; }
+}
+
+/* Form input >=16px untuk cegah auto-zoom iOS saat fokus */
+form.contact input[type="text"],
+form.contact input[type="email"],
+form.contact textarea { font-size: 16px; }
+
+/* Sedikit rapikan heading dan hero di layar kecil */
+@media (max-width: 529px) {
+  .title { min-height: auto; font-size: 1.5rem; }
+}
