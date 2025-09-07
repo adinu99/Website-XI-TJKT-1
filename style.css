@@ -16,7 +16,7 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  -webkit-tap-highlight-color: transparent;
+    outline: 1px solid red;
 }
 
 html,
@@ -165,26 +165,25 @@ nav {
   filter: blur(100px);
   mix-blend-mode: screen;
   opacity: 0.85;
+  animation: float 1s ease-in-out infinite;
   transform-origin: center;
 }
 
 .b1 {
   width: 520px;
   height: 520px;
-  left: -2%;
-  top: -2%;
+  left: -8%;
+  top: -10%;
   background: linear-gradient(135deg, var(--accent1), var(--accent3));
   animation-duration: 10s;
   z-index: -99;
-  overflow: hidden;
 }
 
 .b2 {
   width: 420px;
   height: 420px;
-  right: -2%;
-  bottom: -2%;
-  overflow: hidden;
+  right: -6%;
+  bottom: -12%;
   background: linear-gradient(135deg, var(--accent2), var(--accent1));
   animation-duration: 16s;
 }
